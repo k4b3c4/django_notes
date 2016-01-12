@@ -1,33 +1,37 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+__author__ = 'AlexandrePinheiro'
 from django.db import models
 import datetime
 from django.utils import timezone
-
 
 # Create your models here.
 class Author(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
+    email = models.EmailField(max_length=100, blank=True, null=True, default='')
 
     def __unicode__(self):
         return self.last_name+', '+self.first_name
 
 class Publisher(models.Model):
     publisher_name = models.CharField(max_length=100)
+    site = models.URLField(max_length=100)
+    email = models.EmailField(max_length=100, blank=True, null=True, default='')
+    # relacao onetomany
+    # book =
 
     def __unicode__(self):
         return self.publisher_name
 
 class Genre(models.Model):
-    description = models.CharField(max_length=100)
+    description = models.CharField(max_length=100, unique=True)
 
     def __unicode__(self):
         return self.description
 
 class Type(models.Model):
-    type = models.CharField(max_length=20)
+    type = models.CharField(max_length=20, unique=True)
 
     def __unicode__(self):
         return self.type
