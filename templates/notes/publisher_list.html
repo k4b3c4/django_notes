@@ -1,11 +1,14 @@
-<div>
-    <h1><a href="/">Listagem de Publishers</a></h1>
-</div>
+{% extends 'notes/base.html' %}
 
-{% for p in plist %}
+{% block content %}
     <div>
-        <p>Publisher: {{ p.publisher_name }}</p>
-        <p>site: {{ p.site }}</p>
-        <p>e-mail: {{p.email }}</p>
+        <h1><a href="/">Publisher List</a></h1>
     </div>
-{% endfor %}
+    {% for p in plist %}
+        <div>
+            <p>Publisher: {{ p.publisher_name }}</p>
+            <p>site: {{ p.site }}</p>
+            <p>e-mail: {{p.email }}</p>
+        </div>
+    {% endfor %}
+{% endblock content %}
